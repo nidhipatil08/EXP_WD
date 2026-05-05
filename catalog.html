@@ -4,67 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Book Catalog</title>
+<link rel="stylesheet" href="./style.css">
+
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
-body {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    font-family: Arial;
-}
 
-/* Heading */
-.title {
-    color: white;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-/* Search Box */
-.search-box {
-    border-radius: 30px;
-    padding: 12px;
-    border: none;
-}
-
-/* Card container */
-.catalog-card {
-    background: white;
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-/* Table styling */
-.table tbody tr {
-    transition: all 0.25s ease;
-}
-
-.table tbody tr:hover {
-    background-color: #eef2ff;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-/* Badge styling */
-.badge-available {
-    background-color: #28a745;
-}
-
-.badge-issued {
-    background-color: #dc3545;
-}
-#notFoundMsg .alert {
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    border: none;
-    color: #333;
-    animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(10px);}
-    to {opacity: 1; transform: translateY(0);}
-}
 </style>
 
 </head>
@@ -198,44 +144,6 @@ body {
 </div>
 
 </div>
-<script>
-    const searchInput = document.querySelector(".search-box");
-    const rows = document.querySelectorAll("tbody tr");
-    const notFoundMsg = document.getElementById("notFoundMsg");
-    
-    searchInput.addEventListener("keyup", function () {
-        let searchValue = this.value.toLowerCase();
-        let found = false;
-    
-        rows.forEach(row => {
-            let text = row.innerText.toLowerCase();
-    
-            if (text.includes(searchValue) && searchValue !== "") {
-                row.style.display = "";
-                row.style.backgroundColor = "#ffe082";
-                found = true;
-            } else {
-                row.style.display = "none";
-            }
-        });
-    
-        // If empty input → show all rows
-        if (searchValue === "") {
-            rows.forEach(row => {
-                row.style.display = "";
-                row.style.backgroundColor = "";
-            });
-            notFoundMsg.style.display = "none";
-            return;
-        }
-    
-        // Show message if no match
-        if (!found) {
-            notFoundMsg.style.display = "block";
-        } else {
-            notFoundMsg.style.display = "none";
-        }
-    });
-    </script>
+<script src="./script.js"> </script>
 </body>
 </html>
